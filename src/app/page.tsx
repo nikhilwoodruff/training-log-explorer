@@ -14,7 +14,7 @@ export default function Home() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    fetch('/training_log.csv')
+    fetch(`${process.env.NODE_ENV === 'production' ? '/training-log-explorer' : ''}/training_log.csv`)
       .then(response => response.text())
       .then(csvText => {
         try {
